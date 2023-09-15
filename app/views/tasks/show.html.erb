@@ -1,0 +1,13 @@
+<%byebug%>
+<%= render 'shared/abc', project: @project %>  
+
+<h1> Show Tasks </h1>
+<p>Name:<%= @task.name %></p>
+<p>Description:<%= @task.description %></p>
+<p>Status:<%= @task.status %></p>
+<br>
+<%= link_to 'Edit', edit_project_task_path(@task.project, @task), class: "btn btn-warning" %>
+<%= link_to 'Back' ,project_tasks_path ,class: "btn btn-secondary"%> 
+<hr> 
+<!-- <h5> New Tasks <h5> 
+	<%= rende  tasks/form' > -->

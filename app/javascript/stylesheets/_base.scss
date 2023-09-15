@@ -1,0 +1,34 @@
+
+
+body 
+{
+	background-color:  #eeeeee;
+}
+
+.pull_right_delete {
+	position: absolute;
+	left: 90.5%;
+	top: 10%;
+	margin-bottom: 40px;
+
+}
+
+.pull_right_edit {
+	position: absolute;
+	left: 85%;
+	top: 10%;
+	margin-bottom: 40px;
+}
+
+.task-name {
+	position: relative;
+	right: 94%;
+	margin-top: 40px;
+}
+ .project-card {
+ transition: background-color 0.5s ease;
+ &:hover {
+ background-color: #B8DCC7;
+   }
+   
+}

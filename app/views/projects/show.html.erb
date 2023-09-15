@@ -1,0 +1,83 @@
+<%= render 'shared/abc', project: @project %>  
+
+
+<%= link_to 'Back',projects_path,class: 'btn btn-secondary mb-3' %>
+<div class="card">  
+  <div class="card-body">
+    <h2 class='card-title d-flex justify--content-between nb-4'>
+      <h2> Show Projects </h2> 
+            
+    
+ <p>Name: <%= @project.name %> </p>  
+<p>Description: <%= @project.description %></p>
+<p>User: <%= @project.user_id %></p>
+    <%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-warning pull_right_edit' %> 
+   <!--  <%= @project.id %> -->
+     <% if @project.tasks.count > 0 %>
+      <%= link_to 'Destroy', project_path(@project), method: :delete ,class: 'btn btn-danger pull_right_delete',data: {confirm: 'Are You Sure?' } %><br></h2>
+
+
+
+        <h5> Add Tasks </h5> 
+         <%= form_with(model: [@task.project, @task]) do |form| %>
+            <% if @task.errors.any? %>
+           
+                <h2><%= pluralize(@task.errors.count, "error") %> prohibited this Task from being saved:</h2>
+                <ul>
+                  <% @task.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+          
+          <%= form.hidden_field :status,  value: 'not-started'%>
+         <div class="input-group mb-4">
+            <%= form_for ([@task.project, @task]) do |form|%>
+              <%= form.text_field :name, class: "form-control",placeholder:"Enter task name..." %>
+            <div class="input-group-append">
+               <%= form.submit class:  'btn btn-primary' %>
+            </div>
+            <%end%>
+          </div>
+        <% end %>
+
+                    <br> 
+                    <%= link_to project_tasks_path(@task.project), style: "text-decoration: none;" do %>
+                    <h3 > Tasks List </h3>
+                    <%end%>
+                      <% @project.tasks.each do |task| %> 
+                       <% if task.persisted?%>
+             <div class= "card mb-3">
+                <div class= "card-body"> 
+                    <h5 class='card-title d-flex justify-content-between mb-4'> 
+                      <div>
+                      <span  class="badge badge-<%= task.badge_color %> mb-3 "><%=  task.status %> </span>
+                       <h4><%= task.name %> </h4> 
+                       <p><%= task.description %></p>
+                      </div>
+
+                      
+                         <%= link_to 'Edit', edit_project_task_path(task.project, task), class: 'btn btn-light pull_right_edit' %> 
+                         <%= link_to 'Destroy', project_task_path(task.project, task), method: :delete, data: {confirm: 'Are You Sure?' },class: 'btn btn-dark pull_right_delete' %> 
+                    </h5>
+                  </div> 
+              </div>
+            <%end%>
+            <% end %>
+          <%end%>                
+        </div>
+      </div>   
+   
+
+  
+   
+                
+                                                                                                                              
+
+
+
+
+
+  
+          

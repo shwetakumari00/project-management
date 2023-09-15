@@ -1,0 +1,39 @@
+
+
+ <h1>List of Projects</h1>
+
+<%= link_to "New Project" , new_project_path, class: "btn btn-outline-primary btn-lm  float-right"%> 
+<br>
+<br>
+<%= @projects.each do |project|%>  
+
+<%= render 'shared/abc', project: project%>
+
+   <div class= "jumbotron"> 
+	 <div class="card project-card mb-1">  
+  <div class="card-body ">
+   	 <span  class="badge badge-<%= project.badge_color%> mb-3"><%=  project.state %>  </span> 
+
+	  <span  class="badge badge-<%= project.state_color(project.state)%> float-right mb-3"><%=  project.state %>   </span> 
+
+	 <div class="float-right text-decoration-none">complete (<%= project.task_complete%>  / <%= project.total_task%>)</div>
+
+	 
+	<h1 class="card-title text-dark"><b><%= project.name%> </b></h1> <br>
+	<p class="text-dark"><%= project.description%></p> <br> 
+<hr class="my-4">
+ <div class="text-center">
+<%= link_to "show", project_path(project), class: "btn btn-primary btn-lg" %>  
+	 <%=link_to "edit", edit_project_path(project), class: "btn btn-warning btn-lg" %>     
+	 <%= link_to "Destroy", project, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-lg" %> 
+	</div> 
+</div>
+</div>
+</div>
+
+		<br>
+<%end%>
+
+
+
+

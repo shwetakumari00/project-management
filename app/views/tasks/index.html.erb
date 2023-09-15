@@ -1,0 +1,27 @@
+<%= link_to 'Back',projects_path,class: 'btn btn-outline-secondary mb-3' %>
+<h1>Listing Of Tasks</h1>
+
+
+<%= link_to "New Task" , new_project_task_path,class: "btn btn-outline-primary btn-lm float-right"%> 
+<br>  <br>
+<% @project.tasks.each do |task|%>
+<div class= "jumbotron"> 
+	<h2 class="card-title text-dark"> Task: <%= task.name %></h2> <br>
+	<h5 class="text-dark"> Task: <%= task.description %></h5> <br>
+		<!-- <h1 class="display-4"> task: <%= task.status %></h1> <br> -->
+	<p class="text-secondary"> Project: <%= task.project.id %> 
+  </p> <br> 
+  <hr class="my-4">
+
+ <div class="text-center"> 
+   <%= link_to "Show" ,project_task_path(task.project, task), class: "btn btn-primary btn-lg" %> 
+   <%= link_to "Edit" ,edit_project_task_path(task.project, task), class: "btn btn-warning btn-lg" %>
+   <%= link_to "Destroy", [task.project, task], method: :delete, data: {confirm: "Are you sure?"},class: "btn btn-danger btn-lg"  %><br>
+
+  </div>
+ </div>
+
+<% end %>
+
+
+
